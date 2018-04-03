@@ -12,6 +12,7 @@ public class CubeInteraction : MonoBehaviour, IFocusable, IInputClickHandler , I
     private bool canRotate;
     private Vector3 initalRotation;
     private Vector3 updatedRotation;
+    private Renderer parents;
 
     #region UnityAPI
     
@@ -23,6 +24,8 @@ public class CubeInteraction : MonoBehaviour, IFocusable, IInputClickHandler , I
     public void Awake()
     {
         myRenderer = gameObject.GetComponent<Renderer>();
+        parents = gameObject.GetComponentInParent<Renderer>();
+        Debug.Log(parents);
         myMaterialInstance = myRenderer.material;
        // initalRotation = gameObject.transform.localRotation.eulerAngles;
     }
