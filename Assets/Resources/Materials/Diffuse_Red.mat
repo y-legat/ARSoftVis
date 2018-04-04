@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Diffuse_Red
-  m_Shader: {fileID: 4800000, guid: d360227fb6d36a141a31264bff3faca1, type: 3}
+  m_Shader: {fileID: 4800000, guid: 0a898d5b44c8d884ba9b7aa1474c51f1, type: 3}
   m_ShaderKeywords: S_RECEIVE_SHADOWS S_SPECULAR_BLINNPHONG _GLOSSYREFLECTIONS_OFF
     _SPECULARHIGHLIGHTS_OFF
   m_LightmapFlags: 6

@@ -109,3 +109,6 @@ WSATestCertificate.pfx
 WSATestCertificate.pfx.meta
 
 Assets/HoloToolkit/
+Assets/HoloToolkit-Examples/Medical/
+Assets/HoloToolkit-Examples/Sharing/SharingService/Scripts/ImportExportAnchorManager.cs
+Assets/HoloToolkit-Examples/SharingWithUNET/Materials/ButtonIcons-66.png.meta
