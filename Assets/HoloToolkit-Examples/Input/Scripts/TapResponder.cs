@@ -16,7 +16,7 @@ namespace HoloToolkit.Unity.InputModule.Tests
         {
             // Increase the scale of the object just as a response.
             gameObject.transform.localScale += 0.05f * gameObject.transform.localScale;
-
+            Debug.Log("Click");
             eventData.Use(); // Mark the event as used, so it doesn't fall through to other handlers.
         }
     }

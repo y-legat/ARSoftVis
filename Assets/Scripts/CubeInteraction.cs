@@ -12,10 +12,12 @@ public class CubeInteraction : MonoBehaviour, IFocusable, IInputClickHandler , I
     private bool canRotate;
     private Vector3 initalRotation;
     private Vector3 updatedRotation;
-    private Renderer parents;
+   
+    private InputManager inputManager;
+    private TextMesh textMesh;
 
     #region UnityAPI
-    
+
     private void OnValidate()
     {
         
@@ -23,9 +25,17 @@ public class CubeInteraction : MonoBehaviour, IFocusable, IInputClickHandler , I
 
     public void Awake()
     {
+        inputManager = InputManager.Instance;
+
+        if (inputManager != null)
+        {
+            inputManager.OverrideFocusedObject = gameObject;
+        }
+
+        textMesh = FindObjectOfType<TextMesh>();
+
         myRenderer = gameObject.GetComponent<Renderer>();
-        parents = gameObject.GetComponentInParent<Renderer>();
-        Debug.Log(parents);
+        
         myMaterialInstance = myRenderer.material;
        // initalRotation = gameObject.transform.localRotation.eulerAngles;
     }
@@ -33,6 +43,7 @@ public class CubeInteraction : MonoBehaviour, IFocusable, IInputClickHandler , I
     public void OnFocusEnter()
     {
        myMaterialInstance.color = HighlightColor;
+        Debug.Log(HighlightColor.ToString());
     }
 
     public void OnFocusExit()
@@ -64,9 +75,25 @@ public class CubeInteraction : MonoBehaviour, IFocusable, IInputClickHandler , I
 
     #region Input
 
+    
     public void OnInputClicked(InputClickedEventData eventData)
     {
-        StartRotation();
+
+
+        //StartRotation();
+        // Increase the scale of the object just as a response.
+        gameObject.transform.localScale += 0.05f * gameObject.transform.localScale;
+        Debug.Log("Click");
+        eventData.Use(); // Mark the event as used, so it doesn't fall through to other handlers.
+
+        if (textMesh != null && inputManager != null)
+        {
+            // todo visibility text
+            //Debug.Log(gameObject.name);
+            //textMesh.text = "package_02";
+            textMesh.text = gameObject.name;
+            inputManager.OverrideFocusedObject = null;
+        }
     }
 
     public void OnSpeechKeywordRecognized(SpeechEventData eventData)
